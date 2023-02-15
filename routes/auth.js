@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 
 router.post("/register", async (req, resp) => {
-    let user = new User(req.body);
+    let user = await new User(req.body);
     let result = await user.save();
     result = result.toObject();
     delete result.password
